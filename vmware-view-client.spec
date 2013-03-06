@@ -8,7 +8,7 @@
 
 Name:           vmware-view-client
 Version:        1.7.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deliver rich, personalized virtual desktops with VMware View 5
 
 License:        Proprietary
@@ -23,6 +23,11 @@ ExclusiveArch:	i686
 BuildRequires:  desktop-file-utils
 
 Requires:       freerdp >= 1.0.2
+Requires:       adwaita-gtk2-theme%{?_isa}
+Requires:       alsa-plugins-pulseaudio%{?_isa}
+Requires:       libcanberra-gtk2%{_isa}
+Requires:       libcanberra-gtk3%{_isa}
+Requires:       PackageKit-gtk3-module%{_isa}
 
 %description
 The VMware View Client for Linux, optimized for VMware View 5, turns your
@@ -78,6 +83,10 @@ cp -a %{S:3} %{buildroot}%{_datadir}/pixmaps
 %{_libdir}/vmware
 
 %changelog
+* Wed Mar  6 2013 Jeffrey C. Ollie <jeff@ocjtech.us> - 1.7.0.0-2
+- Bring in some more runtime requirements to make sure we have sound
+- and eliminate a couple annoying error messages.
+
 * Wed Mar  6 2013 Jeffrey C. Ollie <jeff@ocjtech.us> - 1.7.0.0-1
 - First version
 
