@@ -7,8 +7,8 @@
 %filter_setup
 
 Name:           vmware-view-client
-Version:        1.7.0.0
-Release:        2%{?dist}
+Version:        2.0.0
+Release:        1%{?dist}
 Summary:        Deliver rich, personalized virtual desktops with VMware View 5
 
 License:        Proprietary
@@ -62,6 +62,8 @@ rmdir %{buildroot}%{_datadir}/doc
 ln -s ../libudev.so.1 %{buildroot}%{_libdir}/vmware/libudev.so.0
 
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{S:2}
+
+mkdir -p %{buildroot}%{_datadir}/pixmaps
 cp -a %{S:3} %{buildroot}%{_datadir}/pixmaps
 
 %find_lang vmware-view
@@ -70,7 +72,7 @@ cp -a %{S:3} %{buildroot}%{_datadir}/pixmaps
 %doc doc/*
 
 %{_datadir}/pixmaps/*.png
-%{_datadir}/applications/
+%{_datadir}/applications/*.desktop
 %{_bindir}/vmware-remotemks
 %{_bindir}/vmware-view
 %{_bindir}/vmware-view-log-collector
